@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social 20-1 Final Exam Guide — Dragonfly Designs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --p950:#0a0518;--p900:#150930;--p800:#2d1060;--p700:#4c1aab;--p600:#6d28d9;--p500:#7c3aed;--p400:#8b5cf6;--p300:#a78bfa;--p200:#c4b5fd;--p100:#ede9fe;--p50:#f5f3ff;
+  --gold:#f59e0b;--gold-l:#fef3c7;--gold-d:#92400e;
+  --teal:#0d9488;--teal-l:#ccfbf1;--teal-d:#134e4a;
+  --rose:#e11d48;--rose-l:#ffe4e6;--rose-d:#881337;
+  --grn:#16a34a;--grn-l:#dcfce7;--grn-d:#14532d;
+  --indigo:#4338ca;--indigo-l:#e0e7ff;--indigo-d:#312e81;
+  --surf:#fff;--surf2:#f5f3ff;--bg:#f7f5fe;
+  --txt:#0a0518;--txt2:#3b2d6b;--txt3:#7c6b9e;
+  --bdr:rgba(76,26,171,0.1);--bdr2:rgba(76,26,171,0.22);
+  --hdr:56px;--sb:240px;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;font-size:15px;line-height:1.65;overflow-x:hidden}
+
+/* ── HEADER ── */
+.hdr{background:var(--p950);height:var(--hdr);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;position:sticky;top:0;z-index:200;border-bottom:1px solid rgba(167,139,250,.12)}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none}
+.brand svg{width:30px;height:30px;flex-shrink:0}
+.brand-name{font-family:'Playfair Display',serif;font-size:14px;color:var(--p300);letter-spacing:.06em;font-style:italic;white-space:nowrap}
+.hdr-center{font-size:12px;font-weight:500;color:rgba(255,255,255,.38);letter-spacing:.08em;text-transform:uppercase}
+.badge{background:var(--p700);color:var(--p200);font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.04em;white-space:nowrap}
+
+/* ── HAMBURGER ── */
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border:none;background:none;margin-left:auto}
+.ham span{display:block;width:22px;height:2px;background:var(--p300);border-radius:2px;transition:all .2s}
+.ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0}
+.ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ── LAYOUT ── */
+.layout{display:grid;grid-template-columns:var(--sb) 1fr;max-width:1280px;margin:0 auto;min-height:calc(100vh - var(--hdr))}
+
+/* ── SIDEBAR ── */
+.sidebar{background:var(--surf);border-right:1px solid var(--bdr);padding:1.25rem 0 2rem;position:sticky;top:var(--hdr);height:calc(100vh - var(--hdr));overflow-y:auto}
+.sidebar::-webkit-scrollbar{width:4px}.sidebar::-webkit-scrollbar-thumb{background:var(--p200);border-radius:2px}
+.sb-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--txt3);padding:.9rem 1.25rem .3rem}
+.ni{display:flex;align-items:center;gap:8px;padding:7px 1.25rem;cursor:pointer;font-size:13px;color:var(--txt2);border-left:2px solid transparent;transition:all .15s;user-select:none;line-height:1.4}
+.ni:hover{background:var(--p50);color:var(--p700)}
+.ni.active{background:var(--p50);color:var(--p700);border-left-color:var(--p600);font-weight:600}
+.nd{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+/* ── MAIN ── */
+.main{padding:2rem 2.5rem 4rem;overflow-x:hidden}
+.pg{display:none}.pg.active{display:block}
+
+/* ── PAGE HERO ── */
+.hero{margin-bottom:1.75rem;padding-bottom:1.25rem;border-bottom:1px solid var(--bdr)}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--p500);margin-bottom:5px}
+.hero h1{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;line-height:1.25;margin-bottom:7px;background:linear-gradient(135deg,var(--p800) 0%,var(--p500) 50%,var(--p300) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:14px;color:var(--txt3)}
+
+/* ── TEACHER NOTE ── */
+.tnote{background:var(--p950);color:var(--p200);border-radius:10px;padding:12px 16px;font-size:13px;line-height:1.6;margin-bottom:1.25rem}
+.tnote strong{color:var(--p300)}
+
+/* ── CARDS ── */
+.card{background:var(--surf);border:1px solid var(--bdr);border-radius:12px;padding:1.2rem 1.5rem;margin-bottom:.9rem}
+.card-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--p900);margin-bottom:.8rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ctag{font-size:11px;font-weight:700;background:var(--gold-l);color:var(--gold-d);padding:2px 8px;border-radius:20px;font-family:'Plus Jakarta Sans',sans-serif}
+
+/* ── DEF LIST ── */
+.dlist{border-top:1px solid var(--bdr)}
+.dr{display:grid;grid-template-columns:160px 1fr;gap:8px 16px;padding:8px 0;border-bottom:1px solid var(--bdr);font-size:13.5px;align-items:start}
+.dr:last-child{border-bottom:none}
+.dt{font-weight:600;color:var(--p800);padding-left:9px;border-left:2px solid var(--p400);font-size:13px;line-height:1.45}
+.db{color:var(--txt2);line-height:1.55}
+
+/* ── INFO BOXES ── */
+.ib{border-radius:0 8px 8px 0;padding:9px 13px;font-size:13px;margin:.65rem 0;line-height:1.55;border-left:3px solid}
+.ip{background:var(--p100);color:var(--p900);border-color:var(--p500)}
+.ig{background:var(--gold-l);color:var(--gold-d);border-color:var(--gold)}
+.it{background:var(--teal-l);color:var(--teal-d);border-color:var(--teal)}
+.ir{background:var(--rose-l);color:var(--rose-d);border-color:var(--rose)}
+.ii{background:var(--indigo-l);color:var(--indigo-d);border-color:var(--indigo)}
+
+/* ── PILL GRID ── */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;margin:.65rem 0}
+.pc{background:var(--p50);border:1px solid var(--p200);border-radius:9px;padding:11px 13px}
+.pl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--p500);margin-bottom:3px}
+.pv{font-size:14px;font-weight:600;color:var(--p900)}
+.ps{font-size:12px;color:var(--txt3);margin-top:2px}
+
+/* ── CASE CARDS ── */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:9px;margin-top:.65rem}
+.cc{border-radius:9px;padding:11px 13px;border:1px solid}
+.cperp{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+.cevent{font-size:14px;font-weight:600;margin-bottom:4px}
+.cdet{font-size:12px;line-height:1.5}
+.c-red{background:var(--rose-l);border-color:#fecdd3;color:var(--rose-d)}.c-red .cperp{color:var(--rose)}
+.c-teal{background:var(--teal-l);border-color:#99f6e4;color:var(--teal-d)}.c-teal .cperp{color:var(--teal)}
+.c-purple{background:var(--p100);border-color:var(--p200);color:var(--p900)}.c-purple .cperp{color:var(--p600)}
+.c-gold{background:var(--gold-l);border-color:#fde68a;color:var(--gold-d)}.c-gold .cperp{color:#b45309}
+.c-indigo{background:var(--indigo-l);border-color:#c7d2fe;color:var(--indigo-d)}.c-indigo .cperp{color:var(--indigo)}
+
+/* ── SECTION BREAK ── */
+.sb-break{display:flex;align-items:center;gap:10px;margin:1.5rem 0 1.1rem}
+.sbl{flex:1;height:1px;background:var(--bdr)}
+.sblab{font-family:'Playfair Display',serif;font-size:13px;font-style:italic;color:var(--p400);white-space:nowrap}
+
+/* ── STATS ROW ── */
+.srow{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:9px;margin:1rem 0}
+.sbox{background:var(--surf);border:1px solid var(--bdr);border-radius:10px;padding:13px 15px;text-align:center}
+.snum{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--p700);line-height:1;margin-bottom:4px}
+.slab{font-size:11px;color:var(--txt3);font-weight:500}
+
+/* ── UNIT TAG ── */
+.utag{display:inline-flex;align-items:center;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:.5rem}
+
+/* ── QUIZ ── */
+.qmeta{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;flex-wrap:wrap}
+.qscore{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--p700)}
+.qtrack{flex:1;min-width:80px;height:5px;background:var(--p100);border-radius:3px;overflow:hidden}
+.qfill{height:100%;background:linear-gradient(90deg,var(--p600),var(--p400));border-radius:3px;transition:width .4s}
+.rbtn{background:var(--surf);border:1px solid var(--bdr2);border-radius:8px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;color:var(--p700);font-family:'Plus Jakarta Sans',sans-serif;transition:all .15s}
+.rbtn:hover{background:var(--p50)}
+.qblock{margin-bottom:1.1rem}
+.qnum{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--p400);margin-bottom:3px}
+.qtext{font-size:14px;font-weight:600;color:var(--p950);margin-bottom:9px;line-height:1.5}
+.qopt{display:block;width:100%;text-align:left;background:var(--surf);border:1px solid var(--bdr);border-radius:8px;padding:9px 13px;margin-bottom:5px;font-size:13px;cursor:pointer;color:var(--txt2);font-family:'Plus Jakarta Sans',sans-serif;transition:all .15s;line-height:1.45}
+.qopt:hover:not(:disabled){border-color:var(--p400);background:var(--p50);color:var(--p800)}
+.qopt.correct{background:var(--grn-l);border-color:#86efac;color:var(--grn-d);font-weight:600}
+.qopt.wrong{background:var(--rose-l);border-color:#fecdd3;color:var(--rose-d)}
+.qfb{display:none;font-size:12.5px;padding:8px 12px;border-radius:8px;margin-top:3px;line-height:1.5}
+.qfb.show{display:block}.qfb.ok{background:var(--grn-l);color:var(--grn-d)}.qfb.bad{background:var(--rose-l);color:var(--rose-d)}
+
+/* ── REF TABLE ── */
+.rtable{width:100%;border-collapse:collapse;font-size:13px}
+.rtable th{background:var(--p900);color:var(--p200);font-weight:600;font-size:10px;letter-spacing:.09em;text-transform:uppercase;padding:8px 12px;text-align:left}
+.rtable th:first-child{border-radius:8px 0 0 0}.rtable th:last-child{border-radius:0 8px 0 0}
+.rtable td{padding:8px 12px;border-bottom:1px solid var(--bdr);vertical-align:top;line-height:1.5}
+.rtable tr:last-child td{border-bottom:none}
+.rtable tr:nth-child(even) td{background:var(--p50)}
+.rterm{font-weight:600;color:var(--p800)}
+.rtxt{color:var(--txt2)}
+
+/* ── LIST ── */
+ul.cl{padding-left:1.1rem;margin:.4rem 0}
+ul.cl li{font-size:13.5px;color:var(--txt2);line-height:1.7}
+ul.cl li strong{color:var(--p800)}
+
+/* ── ACCORDION ── */
+.acc{border:1px solid var(--bdr);border-radius:10px;margin-bottom:.65rem;overflow:hidden}
+.acc-hdr{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;cursor:pointer;background:var(--surf2);font-size:13.5px;font-weight:600;color:var(--p800);user-select:none;transition:background .15s}
+.acc-hdr:hover{background:var(--p100)}
+.acc-arrow{font-size:12px;color:var(--p400);transition:transform .2s;flex-shrink:0}
+.acc-body{display:none;padding:12px 14px;background:var(--surf);font-size:13px;color:var(--txt2);line-height:1.65;border-top:1px solid var(--bdr)}
+.acc-body.open{display:block}
+
+/* ── MOBILE OVERLAY ── */
+.sb-overlay{display:none;position:fixed;inset:0;background:rgba(10,5,24,.5);z-index:150;backdrop-filter:blur(2px)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  :root{--sb:220px}
+  .main{padding:1.5rem 1.25rem 4rem}
+}
+@media(max-width:680px){
+  :root{--hdr:52px}
+  .ham{display:flex}
+  .hdr-center{display:none}
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:fixed;top:var(--hdr);left:-100%;width:260px;height:calc(100vh - var(--hdr));z-index:160;transition:left .25s;border-right:1px solid var(--bdr2)}
+  .sidebar.open{left:0}
+  .sb-overlay.open{display:block}
+  .main{padding:1.25rem 1rem 5rem}
+  .dr{grid-template-columns:1fr}
+  .dt{border-left:none;border-top:2px solid var(--p200);padding-left:0;padding-top:4px}
+  .hero h1{font-size:22px}
+  .cgrid{grid-template-columns:1fr}
+  .pgrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:400px){.pgrid{grid-template-columns:1fr}}
+
+/* ── PRINT ── */
+@media print{.hdr,.sidebar,.ham,.sb-overlay{display:none!important}.layout{display:block}.main{padding:0}.pg{display:block!important;page-break-before:always}.pg:first-of-type{page-break-before:auto}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr">
+  <a class="brand" href="#">
+    <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <ellipse cx="15" cy="15" rx="2.3" ry="8" fill="#a78bfa" transform="rotate(-38 15 15)"/>
+      <ellipse cx="15" cy="15" rx="1.6" ry="6" fill="#c4b5fd" transform="rotate(18 15 15)"/>
+      <ellipse cx="15" cy="15" rx="5" ry="2.2" fill="#7c3aed" opacity=".75" transform="rotate(-38 15 15)"/>
+      <ellipse cx="15" cy="15" rx="4" ry="1.8" fill="#a78bfa" opacity=".6" transform="rotate(55 15 15)"/>
+      <circle cx="15" cy="15" r="2.2" fill="#ede9fe"/>
+    </svg>
+    <span class="brand-name">Dragonfly Designs</span>
+  </a>
+  <span class="hdr-center">Social 20-1 · Final Exam Study Guide</span>
+  <div style="display:flex;align-items:center;gap:10px">
+    <span class="badge">June 11</span>
+    <button class="ham" id="hamBtn" aria-label="Menu" onclick="toggleSidebar()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="sb-overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+<div class="layout">
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar">
+  <div class="sb-label">Start Here</div>
+  <div class="ni active" onclick="show('ov')"><span class="nd" style="background:var(--p400)"></span>Overview & Exam Tips</div>
+  <div class="sb-label">Unit 1 — Nations</div>
+  <div class="ni" onclick="show('u1a')"><span class="nd" style="background:var(--p500)"></span>What is a Nation?</div>
+  <div class="ni" onclick="show('u1b')"><span class="nd" style="background:var(--p400)"></span>Identity & Loyalties</div>
+  <div class="sb-label">Unit 2 — National Interest</div>
+  <div class="ni" onclick="show('u2a')"><span class="nd" style="background:var(--teal)"></span>Foreign Policy & WWI</div>
+  <div class="ni" onclick="show('u2b')"><span class="nd" style="background:var(--teal)"></span>Ultranationalism</div>
+  <div class="ni" onclick="show('u2c')"><span class="nd" style="background:var(--teal)"></span>Case Studies & Crimes</div>
+  <div class="ni" onclick="show('u2d')"><span class="nd" style="background:var(--teal)"></span>Self-Determination</div>
+  <div class="sb-label">Unit 3 — Internationalism</div>
+  <div class="ni" onclick="show('u3a')"><span class="nd" style="background:var(--rose)"></span>International Bodies</div>
+  <div class="ni" onclick="show('u3b')"><span class="nd" style="background:var(--rose)"></span>Peacekeeping</div>
+  <div class="sb-label">Unit 4 — Canada</div>
+  <div class="ni" onclick="show('u4a')"><span class="nd" style="background:var(--gold)"></span>Canadian Identity</div>
+  <div class="ni" onclick="show('u4b')"><span class="nd" style="background:var(--gold)"></span>Unity & Tensions</div>
+  <div class="sb-label">French Revolution</div>
+  <div class="ni" onclick="show('fr')"><span class="nd" style="background:var(--indigo)"></span>French Revolution</div>
+  <div class="sb-label">Study Tools</div>
+  <div class="ni" onclick="show('quiz')"><span class="nd" style="background:var(--grn)"></span>Practice Quiz (20 Qs)</div>
+  <div class="ni" onclick="show('ref')"><span class="nd" style="background:var(--txt3)"></span>Quick Reference</div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+<!-- ===== OVERVIEW ===== -->
+<section id="ov" class="pg active">
+  <div class="hero">
+    <div class="eyebrow">Social Studies 20-1 · Alberta Curriculum · Exploring Nationalism</div>
+    <h1>Final Exam Study Guide</h1>
+    <p>Built from your teacher's complete review session + all 16 chapters of the textbook. Everything tested, nothing wasted.</p>
+  </div>
+  <div class="tnote"><strong>📋 Direct from your teacher:</strong> June 11 · 60 multiple choice, ALL MC (no written). Unit 2 is the heaviest unit — spend the most time here. Units 1 & 4 ≈ 20–25 questions combined. 60–80% source-based (apply concepts) vs discrete knowledge (specific facts). No dates tested — but know <em>groups</em>, perpetrators vs victims. Ch. 16 = basically skip it. Hard power / soft power = probably won't appear. Sovereignty vs self-determination distinction won't be a direct question but appears in sources. Quiet Revolution / FLQ = context only, not a direct answer.</div>
+  <div class="srow">
+    <div class="sbox"><div class="snum">60</div><div class="slab">MC questions</div></div>
+    <div class="sbox"><div class="snum">4</div><div class="slab">Units tested</div></div>
+    <div class="sbox"><div class="snum">80%</div><div class="slab">Source-based max</div></div>
+    <div class="sbox"><div class="snum">U2</div><div class="slab">Heaviest unit</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Course at a glance</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Big question</div><div class="db">To what extent should we embrace nationalism? — threads through the entire course</div></div>
+      <div class="dr"><div class="dt">Half 1 — Formation</div><div class="db">How nations form and what nationalism is (Ch. 1, 2, 3, 13, 14)</div></div>
+      <div class="dr"><div class="dt">Half 2 — Consequences</div><div class="db">Contending loyalties, ultranationalism, internationalism, Canadian unity (Ch. 3–8, 9–16)</div></div>
+      <div class="dr"><div class="dt">Unit 1</div><div class="db">Nations & national identity — Ch. 1, 2, 3, 13, 14</div></div>
+      <div class="dr"><div class="dt">Unit 2 ⭐ heaviest</div><div class="db">National interest, ultranationalism, crimes against humanity, self-determination — Ch. 5, 6, 7, 8</div></div>
+      <div class="dr"><div class="dt">Unit 3</div><div class="db">Internationalism, peacekeeping — Ch. 9, 10, 11, 12</div></div>
+      <div class="dr"><div class="dt">Unit 4</div><div class="db">Canadian identity, unity & tensions — Ch. 13, 14, 15, 16</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Two core definitions — memorize these</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Nationalism (def 1)</div><div class="db">A force of unification that leads to a national state or event</div></div>
+      <div class="dr"><div class="dt">Nationalism (def 2)</div><div class="db">The common purpose or destiny of a people striving toward a shared goal</div></div>
+      <div class="dr"><div class="dt">The paradox</div><div class="db">Nationalism unifies some people while simultaneously excluding others — it doesn't work the same on everyone</div></div>
+    </div>
+  </div>
+  <div class="ib ig">⭐ <strong>Source-based tip:</strong> When you see a source, ask — What concept does this show? Who holds power? Who is excluded? Is this nationalist (seeking independence) or non-nationalist (feeling marginalized)? Is this civic or ethnic? Those are the moves the exam rewards.</div>
+</section>
+
+<!-- ===== U1A — What is a Nation ===== -->
+<section id="u1a" class="pg">
+  <div class="hero">
+    <span class="utag" style="background:var(--p100);color:var(--p800)">Unit 1 · Ch. 1, 2</span>
+    <h1>What is a Nation?</h1>
+    <p>To what extent should nation be the foundation of identity?</p>
+  </div>
+  <div class="card">
+    <div class="card-title">The 4 P's of a nation <span class="ctag">★ exam likely</span></div>
+    <div class="pgrid">
+      <div class="pc"><div class="pl">People</div><div class="pv">A shared group</div><div class="ps">Ethnic or civic identity</div></div>
+      <div class="pc"><div class="pl">Place</div><div class="pv">A territory</div><div class="ps">Physical homeland</div></div>
+      <div class="pc"><div class="pl">Principles</div><div class="pv">Shared laws & ideas</div><div class="ps">Constitution, rights</div></div>
+      <div class="pc"><div class="pl">Patriotism</div><div class="pv">Love of nation</div><div class="ps">Emotional attachment</div></div>
+    </div>
+    <div class="ib ip">Place alone is <strong>never enough</strong> to make a nation. You need people or principles. That's why Antarctica isn't a nation — it has place, but no people or principles to go with it.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Civic vs ethnic nationalism</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Civic nationalism</div><div class="db">Based on shared <strong>principles turned into laws</strong>. Allegiance is to the state and its institutions. Canada, France, Britain, USA are civic nations. Anyone who accepts the laws can belong.</div></div>
+      <div class="dr"><div class="dt">Ethnic nationalism</div><div class="db">Based on shared <strong>ethnicity, language, ancestry, culture</strong>. Allegiance is to the people and traditions. Germany (historical), Korea, Japan are ethnic nations. Québec nationalism has strong ethnic elements.</div></div>
+      <div class="dr"><div class="dt">Key difference</div><div class="db">Civic: "citizen" is a legal status open to all. Ethnic: membership tied to birth and heritage. Both can coexist in one country.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">8 common bonds (roots of a nation)</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+      <div style="font-size:13px;color:var(--txt2);padding:7px 0;border-bottom:1px solid var(--bdr);padding-right:12px">Language</div>
+      <div style="font-size:13px;color:var(--txt2);padding:7px 0;border-bottom:1px solid var(--bdr);padding-left:12px;border-left:1px solid var(--bdr)">Religion</div>
+      <div style="font-size:13px;color:var(--txt2);padding:7px 0;border-bottom:1px solid var(--bdr);padding-right:12px">Ethnicity / race</div>
+      <div style="font-size:13px;color:var(--txt2);padding:7px 0;border-bottom:1px solid var(--bdr);padding-left:12px;border-left:1px solid var(--bdr)">Shared history</div>
+      <div style="font-size:13px;color:var(--txt2);padding:7px 0;border-bottom:1px solid var(--bdr);padding-right:12px">Shared culture</div>
+      <div style="font-size:13px;color:var(--txt2);padding:7px 0;border-bottom:1px solid var(--bdr);padding-left:12px;border-left:1px solid var(--bdr)">Geography / territory</div>
+      <div style="font-size:13px;color:var(--txt2);padding:7px 0;padding-right:12px">Common economic interests</div>
+      <div style="font-size:13px;color:var(--txt2);padding:7px 0;padding-left:12px;border-left:1px solid var(--bdr)">Shared political system</div>
+    </div>
+    <div class="ib ip" style="margin-top:.7rem">Most tested: <strong>civic bonds</strong> (principles → laws) and <strong>ethnic bonds</strong> (people/ancestry). The other six support these two.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Nation vs nation-state</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Nation</div><div class="db">A people with a shared identity, culture, history — does not require a government or fixed territory</div></div>
+      <div class="dr"><div class="dt">Nation-state</div><div class="db">A political unit (country) where the people and the government largely align. Most countries today are nation-states, but many contain multiple nations (e.g., Canada includes Québécois, First Nations, and other groups)</div></div>
+      <div class="dr"><div class="dt">Benedict Anderson</div><div class="db">Called a nation an "imagined political community" — people feel connected to millions they'll never meet through shared symbols and stories</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Collective consciousness</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Definition</div><div class="db">A shared internal sense of "we" — the common identity, values, and memory that unite a group. William Bloom: people internalize national symbols and can "act as one psychological group" when those symbols are threatened.</div></div>
+      <div class="dr"><div class="dt">National myths</div><div class="db">Shared stories (accurate or not) that connect people to the nation's past and shape how they see the world. Stories of heroism, struggle, hardship. Canada's myths: the "rugged outdoorsman," peacekeepers, hockey, coureurs de bois, building the CPR. Myths are not lies — they are "inspiring narratives in which we tell ourselves who we are or want to be."</div></div>
+      <div class="dr"><div class="dt">Symbols</div><div class="db">National flags, anthems, animals (beaver = Canada), coins, monuments. Symbols and myths together build collective identity. The maple leaf, the Mountie, the loon — all encode Canadian values.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Evolution vs revolution</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Revolution</div><div class="db">Sudden, dramatic overthrow — American Revolution ("life, liberty, pursuit of happiness"). Change happens first, then rules follow.</div></div>
+      <div class="dr"><div class="dt">Evolution</div><div class="db">Gradual, step-by-step change — the Canadian approach. Vote first, discuss, move slowly. Even Québec sovereignists want a referendum before separating.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== U1B — Identity & Loyalties ===== -->
+<section id="u1b" class="pg">
+  <div class="hero">
+    <span class="utag" style="background:var(--p100);color:var(--p800)">Unit 1 · Ch. 3, 13, 14</span>
+    <h1>Identity & Contending Loyalties</h1>
+    <p>How do loyalties shape people's choices and create conflict?</p>
+  </div>
+  <div class="card">
+    <div class="card-title">Types of identity</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Individual identity</div><div class="db">"I" statements — personal values, beliefs, preferences. Unique to each person.</div></div>
+      <div class="dr"><div class="dt">Collective identity</div><div class="db">"We" statements — shared with a group (religion, culture, ethnicity). "In my Hindu community, we…"</div></div>
+      <div class="dr"><div class="dt">National identity</div><div class="db">Shared with the nation — internalized national symbols. "As Canadians, we should…"</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Contending loyalties <span class="ctag">★ key concept</span></div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Definition</div><div class="db">Competing loyalties that pull people in different directions — loyalty to nation vs loyalty to religion, region, class, culture, etc.</div></div>
+      <div class="dr"><div class="dt">Nationalist loyalty</div><div class="db">Groups striving for sovereignty or political independence — e.g. Québec sovereignists, Tibet, Kosovo Albanians. Their goal is self-determination leading to a separate state.</div></div>
+      <div class="dr"><div class="dt">Non-nationalist loyalty</div><div class="db">Feeling underrepresented or marginalized but NOT seeking independence — e.g. Alberta regionalism, religious groups, class loyalty. They compete with national loyalty but don't aim for statehood.</div></div>
+      <div class="dr"><div class="dt">The key test</div><div class="db">Striving for <em>sovereignty/independence</em>? → Nationalist loyalty. Just feeling underrepresented? → Non-nationalist loyalty. This can be fluid — Alberta regionalism could slide into nationalism.</div></div>
+    </div>
+    <div class="ib ip" style="margin-top:.7rem">Types of non-nationalist loyalty: class, religious, regional, ideological, cultural, racial/ethnic. Any of these can compete with national loyalty.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Multiculturalism & reasonable accommodation</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Cultural pluralism</div><div class="db">Encouraging different cultural groups to maintain their identities within one society. Canada's "mosaic" vs USA's "melting pot."</div></div>
+      <div class="dr"><div class="dt">Multiculturalism</div><div class="db">Canada's official version of cultural pluralism. Policy since 1971, enhanced in the Canadian Multiculturalism Act (1988). Canada was the first country to adopt multiculturalism as official government policy.</div></div>
+      <div class="dr"><div class="dt">Reasonable accommodation</div><div class="db">Legal/constitutional requirement for public institutions to adapt to religious and cultural practices of minorities — as long as these don't violate other rights. Example: RCMP Sikh turban (Baltej Singh Dhillon, 1990) — allowed as a reasonable accommodation.</div></div>
+      <div class="dr"><div class="dt">Debate</div><div class="db">Some argue multiculturalism strengthens Canada (unity in diversity). Others argue it divides Canadians and weakens a shared nationalist loyalty. Québec debates reasonable accommodation around its Francophone identity.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Oka Crisis (1990) <span class="ctag">case study</span></div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">What happened</div><div class="db">Mohawks on the Kanesatake reserve near Oka, Québec, blocked expansion of a golf course onto sacred land they claimed as their own. 4-month standoff. Québec police moved in, shots fired, an officer was killed. Army called in with 2500 soldiers.</div></div>
+      <div class="dr"><div class="dt">Outcome</div><div class="db">Protest ended September 26. Most protesters found not guilty. Federal government later bought the land and gave it to the Mohawks. Left a legacy of bitterness.</div></div>
+      <div class="dr"><div class="dt">Why it matters</div><div class="db">Classic example of contending nationalist loyalties — Aboriginal self-determination vs provincial and federal authority. Led directly to the Royal Commission on Aboriginal Peoples (1991).</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== U2A — Foreign Policy & WWI ===== -->
+<section id="u2a" class="pg">
+  <div class="hero">
+    <span class="utag" style="background:var(--teal-l);color:var(--teal-d)">Unit 2 — Heaviest · Ch. 5</span>
+    <h1>National Interest & Foreign Policy</h1>
+    <p>To what extent should national interest be pursued?</p>
+  </div>
+  <div class="tnote"><strong>Teacher:</strong> Unit 2 is the heaviest unit on the final. Bank on it.</div>
+  <div class="card">
+    <div class="card-title">Key definitions</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">National interest</div><div class="db">What a nation needs (necessities) or wants (desires) — just like personal needs vs wants, but for a whole country. Needs must be met; wants expand power and prosperity.</div></div>
+      <div class="dr"><div class="dt">Domestic policy</div><div class="db">Guides decisions <em>within</em> the country — e.g. changing laws, settling land claims, spending tax revenue</div></div>
+      <div class="dr"><div class="dt">Foreign policy</div><div class="db">Guides decisions about official relations with <em>other countries</em> — treaties, trade, human rights, UN involvement. Also called external relations or foreign affairs.</div></div>
+      <div class="dr"><div class="dt">Stakeholders</div><div class="db">Anyone who affects or is affected by the pursuit of national interest — allies, enemies, domestic groups. Achieving one nation's interest often means another doesn't get what it wants.</div></div>
+      <div class="dr"><div class="dt">Nationalism vs internationalism</div><div class="db"><strong>Nationalism</strong> = competitive — puts your nation first. <strong>Internationalism</strong> = cooperative — works with others for shared goals.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">The cycle: nationalism → national interest → foreign policy</div>
+    <ul class="cl">
+      <li>Domestic and international events awaken nationalist feelings in citizens</li>
+      <li>These feelings cause citizens to revise what they see as the national interest</li>
+      <li>Governments alter their foreign policies in response to these changing priorities</li>
+      <li>The new foreign policy then affects both domestic and international events — and the cycle continues</li>
+    </ul>
+  </div>
+  <div class="sb-break"><div class="sbl"></div><span class="sblab">World War I & Its Consequences</span><div class="sbl"></div></div>
+  <div class="card">
+    <div class="card-title">WWI causes — nationalism & national interest</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Root causes</div><div class="db">European nations believed expanding territory and colonial possessions was in their national interest. This drove them to form alliances — and the alliance system dragged everyone into war when one country was threatened.</div></div>
+      <div class="dr"><div class="dt">Spark</div><div class="db">Gavrilo Princip (Serbian nationalist) assassinated Archduke Franz Ferdinand of Austria-Hungary — triggering alliance obligations across Europe</div></div>
+      <div class="dr"><div class="dt">Canada's role</div><div class="db">Before WWI, Britain controlled Canada's foreign policy — so when Britain declared war, Canada was automatically at war. After Canada's contribution, PM Robert Borden demanded the right to attend the Paris Peace Conference as an independent country.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Treaty of Versailles (1919) <span class="ctag">★ know this</span></div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">What Germany lost</div><div class="db">Required to: reduce military, pay $30 billion in reparations, give up European territories and colonies, accept full responsibility ("war guilt clause") for causing the war</div></div>
+      <div class="dr"><div class="dt">Why it mattered</div><div class="db">Created massive resentment in Germany — economic devastation, inflation, humiliation. This resentment became fertile ground for Hitler and the Nazi Party.</div></div>
+      <div class="dr"><div class="dt">Woodrow Wilson</div><div class="db">US President proposed Fourteen Points — a fair peace with no reparations. Most were ignored by France and Britain. Also proposed the League of Nations. The US Senate refused to ratify the treaty, so the US never joined the League.</div></div>
+      <div class="dr"><div class="dt">League of Nations</div><div class="db">Created after WWI to maintain collective security. Failed — Japan invaded Manchuria (1931), Italy invaded Ethiopia (1935), Germany violated treaty terms. Members couldn't agree on military action. Replaced by the UN after WWII.</div></div>
+    </div>
+    <div class="ib ig">Ferdinand Foch (WWI Allied commander) said of the Treaty: "This is not a peace treaty. It is an armistice of 20 years." He was right — WWII began exactly 20 years later.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Middle East consequences of WWI</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">The betrayal</div><div class="db">Arabs fought alongside the Allies against the Ottoman Turks, having been promised an independent homeland. Britain and France secretly agreed instead to divide the Middle East between themselves (Sykes-Picot Agreement). Arabs were not given their promised state.</div></div>
+      <div class="dr"><div class="dt">Long-term impact</div><div class="db">The broken promises and foreign-drawn borders created ongoing nationalist tensions in the Middle East that persist to this day. Demonstrates that national interests pursued without considering others create lasting problems.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== U2B — Ultranationalism ===== -->
+<section id="u2b" class="pg">
+  <div class="hero">
+    <span class="utag" style="background:var(--teal-l);color:var(--teal-d)">Unit 2 · Ch. 6</span>
+    <h1>Ultranationalism</h1>
+    <p>To what extent can nationalism lead to ultranationalism?</p>
+  </div>
+  <div class="card">
+    <div class="card-title">What is ultranationalism? <span class="ctag">★ core concept</span></div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Definition</div><div class="db">An extreme, fanatical form of nationalism — intolerant of others, single-minded, willing to use violence to achieve its goals</div></div>
+      <div class="dr"><div class="dt">3 warning signs</div><div class="db">1. <strong>Violence</strong> against a targeted group &nbsp; 2. <strong>Targeted</strong> — aimed at one specific group &nbsp; 3. <strong>Fanatical</strong> — unwavering, won't back down or admit wrongdoing</div></div>
+      <div class="dr"><div class="dt">Escalation path</div><div class="db">Contempt/prejudice → Segregation → Rights denied → Deportation → Genocide. Each step dehumanizes the target group further, making the next step easier.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">How ultranationalism develops</div>
+    <ul class="cl">
+      <li><strong>Economic/social crisis:</strong> The Great Depression of the 1930s created unemployment, poverty, and desperation. People looked for a strong leader who could fix things.</li>
+      <li><strong>Charismatic authoritarian leader:</strong> Hitler, Stalin, Mussolini, Tojo — leaders who inspired devotion and silenced opposition with force</li>
+      <li><strong>National myths of superiority:</strong> Propaganda promoting the idea that one group is superior and others are inferior or dangerous</li>
+      <li><strong>Propaganda:</strong> Uses fear, insecurity, hatred — calls opponents names, hides defeats, appeals to religious/national symbols, blames problems on a scapegoat group</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">Nazi Germany (Hitler)</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Rise to power</div><div class="db">Post-WWI Germany: extreme inflation (money became nearly worthless), Great Depression, unemployment, humiliation from Treaty of Versailles. Hitler elected 1933, then dissolved parliament and declared himself dictator.</div></div>
+      <div class="dr"><div class="dt">Ultranationalist policies</div><div class="db">Rejected Treaty of Versailles; rebuilt army; declared "Aryan race" superior; stripped Jews of rights, property, education, jobs; Kristallnacht (1938) — night of anti-Jewish violence; books burned; media controlled by Joseph Goebbels</div></div>
+      <div class="dr"><div class="dt">Propaganda tools</div><div class="db">Radio, movies, giant rallies (up to 100,000), posters, pamphlets, carefully controlled media. "Today Germany, tomorrow the whole world."</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Stalinist Soviet Union</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Stalin's rule</div><div class="db">Communist dictator from late 1920s to 1953. Wanted to replace loyalties of 100 distinct national groups with Soviet nationalism. Confiscated farmland, created collective farms — those who objected were executed or sent to forced-labour camps in Siberia.</div></div>
+      <div class="dr"><div class="dt">Ukraine (Holodomor)</div><div class="db">Ukrainian farmers refused to give up their land. Stalin confiscated their crops. Up to 10 million Ukrainians starved to death. Ukrainian language was outlawed. Ukrainians were the largest group of political prisoners in labour camps.</div></div>
+      <div class="dr"><div class="dt">Scale</div><div class="db">Between 20 and 60 million people executed or died in famines, forced-labour camps, and deportations under Stalin's rule</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Imperial Japan (Tojo Hideki)</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Rise of militarism</div><div class="db">Ultranationalists rid Japan of democracy, making it a one-party military state. Emperor Hirohito revered as "Son of Heaven" but military leaders held real power. General Tojo became PM in 1941.</div></div>
+      <div class="dr"><div class="dt">Ultranationalist values</div><div class="db">Worship of the emperor as a demigod; belief Japanese people are superior with a heaven-ordained mission to expand; contempt for death; blind obedience. Education system based on "The Way of Subjects" — promoted military values, scorned Western ideas.</div></div>
+      <div class="dr"><div class="dt">Military expansion</div><div class="db">Invaded China, captured territory across Asia for raw materials and markets. Attacked Pearl Harbor (1941), bringing the US into WWII. Kamikaze pilots — suicide missions seen as ultimate expression of devotion to nation.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Appeasement — responding to ultranationalism</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Appeasement</div><div class="db">Giving in to an aggressor's demands hoping to avoid war. The Allies (Britain, France, Italy) gave Hitler the Sudetenland in 1938 in exchange for his promise not to expand further. Churchill called it choosing "dishonour" — and they still got war.</div></div>
+      <div class="dr"><div class="dt">Why it failed</div><div class="db">Hitler took the rest of Czechoslovakia in 1939 anyway. Appeasement emboldened aggression. Churchill was proven right — appeasing ultranationalists only encourages them.</div></div>
+    </div>
+    <div class="ib ir">Churchill: "An appeaser is someone who feeds a crocodile — hoping it will eat him last." Appeasement ultimately leads to war, just later and on worse terms.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">3 responses to ultranationalism</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Appeasement</div><div class="db">Give in to demands hoping to avoid conflict. Delay tactic — ultimately failed against Hitler.</div></div>
+      <div class="dr"><div class="dt">Internationalism</div><div class="db">Build alliances, strengthen collective numbers, use cooperative diplomatic and economic pressure. The long-term productive response.</div></div>
+      <div class="dr"><div class="dt">Confrontation / war</div><div class="db">Direct military opposition. Ultimately what stopped Nazi Germany, Imperial Japan, and Fascist Italy.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== U2C — Case Studies & Crimes ===== -->
+<section id="u2c" class="pg">
+  <div class="hero">
+    <span class="utag" style="background:var(--teal-l);color:var(--teal-d)">Unit 2 · Ch. 7</span>
+    <h1>Crimes Against Humanity</h1>
+    <p>To what extent can the pursuit of ultranationalism lead to crimes against humanity?</p>
+  </div>
+  <div class="card">
+    <div class="card-title">Legal definitions <span class="ctag">★ know precisely</span></div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Genocide</div><div class="db">Killing members of a national, ethnic, racial, or religious group; causing serious bodily or mental harm; deliberately destroying conditions of life to bring about the group's physical destruction</div></div>
+      <div class="dr"><div class="dt">Crimes against humanity</div><div class="db">Widespread or systematic attacks against a civilian population — murder, extermination, enslavement, deportation, imprisonment, torture, rape or sexual slavery, enforced disappearance, the crime of apartheid</div></div>
+      <div class="dr"><div class="dt">War crimes</div><div class="db">Wilful killing, torture, or inhuman treatment; wilfully causing great suffering; intentionally directing attacks against the civilian population or against those involved in a humanitarian or peacekeeping mission</div></div>
+      <div class="dr"><div class="dt">Ethnic cleansing</div><div class="db">Forcing a particular ethnic group out of a territory through violence, intimidation, or expulsion — making an area "ethnically pure"</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Case studies — perpetrators vs victims <span class="ctag">★ know these pairings</span></div>
+    <div class="ib it">You won't be asked for dates or individual names — but you MUST correctly identify which group were perpetrators and which were victims in each case.</div>
+    <div class="cgrid">
+      <div class="cc c-red"><div class="cperp">Perpetrators: Ottoman Turks</div><div class="cevent">Armenian Genocide (WWI era)</div><div class="cdet">~1.5 million Armenians killed. Turkey's official state policy still denies it occurred. Turkish journalist Hrant Dink was killed for reporting on it.</div></div>
+      <div class="cc c-red"><div class="cperp">Perpetrators: Nazi Germany</div><div class="cevent">The Holocaust</div><div class="cdet">6 million Jews killed + Roma, disabled, Slavs, homosexuals. Auschwitz-Birkenau death camp. Systematic — rights stripped first, then deportation, then extermination.</div></div>
+      <div class="cc c-purple"><div class="cperp">Perpetrators: Stalinist USSR</div><div class="cevent">Holodomor (Ukraine)</div><div class="cdet">~3–10 million Ukrainians deliberately starved. Crops confiscated, language outlawed. Largest group in Soviet labour camps.</div></div>
+      <div class="cc c-teal"><div class="cperp">Perpetrators: Hutu ultranationalists</div><div class="cevent">Rwanda Genocide (1994)</div><div class="cdet">~800,000 Tutsis killed in 100 days. Radio propaganda urged killing. Identity cards (introduced by Belgian colonizers) used to identify victims. Gen. Roméo Dallaire (Canadian) commanded 2,600 UN peacekeepers — his warnings ignored, requests denied. Led to ICC creation.</div></div>
+      <div class="cc c-gold"><div class="cperp">Perpetrators: Bosnian Serbs</div><div class="cevent">Bosnia/Sarajevo (1990s)</div><div class="cdet">Ethnic cleansing of Bosnian Muslims in the former Yugoslavia. UN peacekeepers present but powerless. Led to peacekeeping reform debate.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">International Criminal Court (ICC)</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Created</div><div class="db">Conceived by the UN in 1998. Permanent court located in The Hague, Netherlands. Supported by Canada. Tries people for genocide, crimes against humanity, and war crimes.</div></div>
+      <div class="dr"><div class="dt">What it does</div><div class="db">Holds individuals — not just states — accountable for "the most serious crimes of international concern." Nations that support it believe peace and security are in everyone's national interest.</div></div>
+      <div class="dr"><div class="dt">Limitations</div><div class="db">Needs <em>state cooperation</em> to function. Poor deterrent — only deals with crimes <em>after</em> they occur, and only when cooperating states hand over suspects. Does not prevent genocide from happening.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Canadian examples of ultranationalist tendencies</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Japanese internment (WWII)</div><div class="db">Rights stripped, property confiscated, Japanese Canadians locked up. Targeted one group in a hateful way — but Canada eventually admitted it was wrong and retracted. Not fully ultranationalist because it wasn't fanatically maintained.</div></div>
+      <div class="dr"><div class="dt">Conscription (WWI & WWII)</div><div class="db">Forced military service stripped freedoms and deeply divided French vs English Canada. The government even held a plebiscite in 1942 to break PM King's promise not to send conscripts overseas — 79% of anglophones voted yes, 85% of Francophones voted no.</div></div>
+    </div>
+    <div class="ib ig">These examples show Canada coming close to the line — but not crossing into true ultranationalism because there was resistance, debate, and eventual rejection of these policies.</div>
+  </div>
+</section>
+
+<!-- ===== U2D — Self-Determination ===== -->
+<section id="u2d" class="pg">
+  <div class="hero">
+    <span class="utag" style="background:var(--teal-l);color:var(--teal-d)">Unit 2 · Ch. 8</span>
+    <h1>Self-Determination</h1>
+    <p>To what extent should national self-determination be pursued?</p>
+  </div>
+  <div class="card">
+    <div class="card-title">Sovereignty vs self-determination <span class="ctag">★ tricky distinction</span></div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Sovereignty</div><div class="db">Full political independence — being in charge of your own state, free from outside control. The highest level of political authority. If a source mentions "sovereignty," read it as <strong>national independence</strong>. Sovereignty always stands above self-determination.</div></div>
+      <div class="dr"><div class="dt">Self-determination</div><div class="db">The right of a people to freely choose how they'll be governed. Does <strong>not</strong> always mean full independence — can include self-government within a larger state.</div></div>
+      <div class="dr"><div class="dt">First Nations example</div><div class="db">First Nations want <strong>self-determination</strong> (the right to self-government within Canada) — NOT sovereignty. Full sovereignty would mean they're in charge of all of Canada, which isn't the goal. This is their home — they want control of their own affairs, not a separate state.</div></div>
+    </div>
+    <div class="ib ip">Source tip: If a source shows First Nations asking for "sovereignty," that's actually <em>misleading</em> phrasing — they want self-determination. If a source shows Québec sovereignists, they want full political independence from Canada — that IS sovereignty.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Québec sovereignty debate <span class="ctag">case study</span></div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">1995 referendum</div><div class="db">NO: 50.5% — YES: 49.42%. Razor-thin margin. 93.5% of Québécois voted. Described as a "near-death experience" for Canadian federalists.</div></div>
+      <div class="dr"><div class="dt">Sovereignists</div><div class="db">Québécois must control their own destiny (Lucien Bouchard: "We are a people, a nation, and as a nation we have a fundamental right to our territory"). Support Parti Québécois (PQ).</div></div>
+      <div class="dr"><div class="dt">Federalists</div><div class="db">Québécois identity is inseparable from Canadian identity. Canada was born in 1534, not 1867 — Québécois history is Canada's history.</div></div>
+      <div class="dr"><div class="dt">Quiet Revolution</div><div class="db">Transformed Québec from rural/religious to modern/urban. Bill 101 (1977) protected French as the language of government, workplaces, education, and business. Raised Francophone economic status but some became less interested in sovereignty once they were prospering within Canada.</div></div>
+      <div class="dr"><div class="dt">2006 — Harper motion</div><div class="db">"The Québécois form a nation within a united Canada." Passed House of Commons 266–16. Nation within Canada, not independence.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Kosovo & Tibet — international self-determination</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Kosovo</div><div class="db">Ethnic Albanians (~90%) vs ethnic Serbs. Kosovo declared independence from Serbia in 2008. UN forces administered the province after 1990s conflict. Russia and China called the declaration "null and void" — conflict between state sovereignty and peoples' self-determination.</div></div>
+      <div class="dr"><div class="dt">Tibet</div><div class="db">China invaded in 1950, suppressed Buddhist religion, destroyed monasteries. Tibetans pursue self-determination — Dalai Lama appealed to UN. Chinese resettlement program (Qinghai–Tibet Railway, 2006) brought Chinese immigrants, threatening Tibetan majority status. 3 UN General Assembly resolutions supported Tibetan self-determination.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">First Nations self-determination in Canada</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">What they want</div><div class="db">Self-government within Canada — right to determine political status, pursue economic/social/cultural development, manage their own resources. Not independence, not sovereignty — self-government.</div></div>
+      <div class="dr"><div class="dt">Royal Commission (1996)</div><div class="db">People to People, Nation to Nation — 66 recommendations. Main conclusion: 150+ years of assimilation policy "was wrong." Urged Canada to see First Nations as nations with the right to self-government in partnership with Canada.</div></div>
+      <div class="dr"><div class="dt">Statement of Reconciliation (1998)</div><div class="db">Federal government expressed regret for suppressing Aboriginal culture. AFN gave federal government a failing grade in 2006 — most recommendations not implemented. 800+ specific land claims still unresolved.</div></div>
+      <div class="dr"><div class="dt">Nisga'a Agreement (1998)</div><div class="db">Landmark: 2000 km² of traditional territory in BC + right to self-government over culture, language, land use, health, education, mineral resources. Model for future agreements.</div></div>
+      <div class="dr"><div class="dt">Nunavut (1999)</div><div class="db">New territory created April 1, 1999. 85% Inuit population. Gradually took over own administration. Traditional Inuit knowledge (quajimajatuqangit) incorporated into government policies.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== U3A — International Bodies ===== -->
+<section id="u3a" class="pg">
+  <div class="hero">
+    <span class="utag" style="background:var(--rose-l);color:var(--rose-d)">Unit 3 · Ch. 9, 11, 12</span>
+    <h1>Internationalism & Global Institutions</h1>
+    <p>To what extent should internationalism be pursued?</p>
+  </div>
+  <div class="card">
+    <div class="card-title">Why internationalism emerged</div>
+    <ul class="cl">
+      <li>Two World Wars proved that national competition leads to catastrophic destruction</li>
+      <li>The League of Nations (created after WWI) failed to maintain peace — Japan, Italy, Germany all violated agreements with no real consequences</li>
+      <li>Countries decided the only hope was joining together as a world community with collective responsibility</li>
+      <li>The United Nations was founded after WWII with 192 member countries</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">Key international institutions</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">United Nations</div><div class="db">Peace, security, human rights. Security Council = most powerful decision-making body. All members agree to keep forces available for the Security Council. Provides a forum for disputes. Has not prevented all armed conflict, but no third world war.</div></div>
+      <div class="dr"><div class="dt">World Bank / IMF</div><div class="db">Economic stability — originally rebuilt post-war Europe, now assist developing countries. Criticized for being dominated by Western nations (US, Europe) whose policies sometimes harm developing countries.</div></div>
+      <div class="dr"><div class="dt">WTO</div><div class="db">Evolved from GATT (1947) — governs international trade rules, streamlines trade, resolves trade disputes. Also criticized for favouring wealthy nations.</div></div>
+      <div class="dr"><div class="dt">ICC</div><div class="db">International Criminal Court — tries genocide, war crimes, crimes against humanity. Conceived by UN 1998. Needs state cooperation. (Full detail in Unit 2.)</div></div>
+      <div class="dr"><div class="dt">NATO</div><div class="db">North Atlantic Treaty Organization — founded 1949 as a defensive military alliance against Soviet threat. Canada was a founding member. "An attack on one is an attack on all." Role evolved to include peacekeeping/peacemaking after Cold War.</div></div>
+      <div class="dr"><div class="dt">NGOs</div><div class="db">Non-governmental organizations — Red Cross, Médecins Sans Frontières, Amnesty International. Provide humanitarian aid independent of governments. Can act quickly in crises.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Benefits of internationalism</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Peace & security</div><div class="db">UN provides forum for disputes; no WWIII since 1945; peacekeeping missions worldwide</div></div>
+      <div class="dr"><div class="dt">Economic stability</div><div class="db">World Bank, IMF, WTO promote trade and financial stability across borders</div></div>
+      <div class="dr"><div class="dt">Humanitarianism</div><div class="db">International agencies respond quickly to disasters — 2004 Indian Ocean tsunami response showed value of international cooperation</div></div>
+      <div class="dr"><div class="dt">Indigenous rights</div><div class="db">2007 UN Declaration on Rights of Indigenous Peoples — confirmed right to self-determination. Canada, US, Australia, NZ voted against (worried about land/resource clauses).</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Globalization's effect on foreign policy</div>
+    <ul class="cl">
+      <li>Globalization has reduced the role of nation-states and increased the role of multinational corporations and international organizations</li>
+      <li>Domestic and foreign policy are now so intertwined it's hard to separate them — trade rules affect labour laws, environmental policy affects trade</li>
+      <li>Canada combined its foreign affairs and international trade departments in 1982 — reflecting this blurring</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== U3B — Peacekeeping ===== -->
+<section id="u3b" class="pg">
+  <div class="hero">
+    <span class="utag" style="background:var(--rose-l);color:var(--rose-d)">Unit 3 · Ch. 10</span>
+    <h1>Peacekeeping & Peacemaking</h1>
+    <p>To what extent can foreign policy promote internationalism?</p>
+  </div>
+  <div class="card">
+    <div class="card-title">Canada & peacekeeping origins <span class="ctag">★ important</span></div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Lester B. Pearson</div><div class="db">Canada's minister of external affairs (later PM) who invented modern peacekeeping in 1956 during the Suez Canal crisis. Proposed the UN Emergency Force to defuse a conflict that threatened world war. Won the Nobel Peace Prize.</div></div>
+      <div class="dr"><div class="dt">Canada's record</div><div class="db">Since 1956, Canada has taken part in about 50 peacekeeping missions. In 1991, Canada contributed more than 10% of all UN peacekeeping forces. By 2007, this had fallen to less than 0.1%. Some debate whether Canada's "peacekeeping identity" is now more myth than reality.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Peacekeeping rules — the 3 principles</div>
+    <div class="pgrid">
+      <div class="pc"><div class="pl">Consent</div><div class="pv">Must respect the host country's sovereignty</div></div>
+      <div class="pc"><div class="pl">Impartiality</div><div class="pv">Must not take sides in the conflict</div></div>
+      <div class="pc"><div class="pl">Self-Defence</div><div class="pv">Can only use force to defend themselves</div></div>
+    </div>
+    <div class="ib ir" style="margin-top:.7rem">These rules made peacekeepers ineffective in both Rwanda and Bosnia — they could watch genocide happen but couldn't stop it.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Peacekeeping vs peacemaking</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Peacekeeping</div><div class="db">Sent in <em>only after</em> a ceasefire. Neutral — can't take sides. Force only in self-defence. Needs host country's consent. Sets up buffer zones, monitors, observes. <strong>Not proactive.</strong></div></div>
+      <div class="dr"><div class="dt">Peacemaking</div><div class="db">Active military intervention. Not neutral — can take sides. Can shoot to kill. Does not need the country's consent. Goal is to actively end armed conflict and stop human rights abuses. <strong>More like war-fighting.</strong></div></div>
+      <div class="dr"><div class="dt">Example of peacemaking</div><div class="db">1991 Gulf War — multinational UN force pushed Iraqi invaders out of Kuwait. Used offensive force, not just peacekeeping. This became the model critics wanted after Rwanda's failure.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Peacekeeping failures & the reform debate</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Bosnia/Yugoslavia (1990s)</div><div class="db">Peacekeepers present but powerless — limited numbers, couldn't use force, genocide continued. The Medak Pocket: Canadian peacekeepers discovered evidence of war crimes but could do nothing.</div></div>
+      <div class="dr"><div class="dt">Rwanda (1994)</div><div class="db">General Roméo Dallaire commanded 2600 UN peacekeepers. Warned the UN of genocide risk months before. Asked for more troops and permission to seize Hutu weapons. All requests denied. 800,000 killed in 100 days. UN Secretary-General Boutros Boutros-Ghali later called the inaction "one of the greatest failures of his life."</div></div>
+      <div class="dr"><div class="dt">2004 UN report</div><div class="db">"A More Secure World: Our Shared Responsibility" — recommended that the UN be allowed to intervene in internal conflicts when a state fails to protect its own people. Controversial: seen as a direct challenge to national sovereignty.</div></div>
+      <div class="dr"><div class="dt">Peacekeeping debate</div><div class="db">Retired Major-General MacKenzie wanted to "get rid of the Canadian myth" of peacekeeping — numbers don't back it up. Others say peacekeeping is part of Canadian national identity and "important in Canadians' self-definition."</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== U4A — Canadian Identity ===== -->
+<section id="u4a" class="pg">
+  <div class="hero">
+    <span class="utag" style="background:var(--gold-l);color:var(--gold-d)">Unit 4 · Ch. 13, 14</span>
+    <h1>Canadian National Identity</h1>
+    <p>To what extent have visions of Canadian identity evolved?</p>
+  </div>
+  <div class="tnote"><strong>Teacher:</strong> Ch. 13 applies what we learned in Ch. 1–2 to Canada. Ch. 14 = the forces and institutions that maintain Canadian unity.</div>
+  <div class="card">
+    <div class="card-title">What defines Canada as a nation?</div>
+    <ul class="cl">
+      <li><strong>Civic nation</strong> — built on principles in law (Constitution Act 1982, Charter of Rights and Freedoms)</li>
+      <li><strong>Bilingual</strong> — French and English both official languages. Official Languages Act (1969) under Trudeau protected French nationally.</li>
+      <li><strong>Multicultural</strong> — 1971: first country to adopt multiculturalism as official policy. Canadian Multiculturalism Act (1988) — "mosaic, not melting pot"</li>
+      <li><strong>Federal state</strong> — power shared between federal and provincial governments</li>
+      <li><strong>Regional diversity</strong> — very strong regional identities. Canada is hard to fit in one box — "muddy and messy" but deliberately inclusive.</li>
+      <li><strong>Constitutional monarchy / parliamentary democracy</strong></li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">National symbols & myths (Ch. 14)</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Symbols</div><div class="db">Maple leaf (national flag), beaver (national animal — fur trade history, on 5¢ coin), loon (loonie, $1 coin), RCMP uniform (Mounties), hockey</div></div>
+      <div class="dr"><div class="dt">National myths</div><div class="db">"Rugged Canadian" triumphing over nature (coureurs de bois, pioneers, building the CPR, playing hockey on outdoor rinks). Canada as peacekeeper. Canadians as funny (Jim Carrey, Mike Myers, etc.). Myths may not be accurate but inspire a shared sense of "who we are."</div></div>
+      <div class="dr"><div class="dt">Debate about myths</div><div class="db">Some say myths promote unity. Others say myths exclude groups (who was left out of the "rugged pioneer" myth?). Ernest Renan: a nation is unified by shared memories and the desire to live together. Myths help create those shared memories.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Forces of Canadian unity</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Charter of Rights (1982)</div><div class="db">Enshrines fundamental rights and freedoms for all Canadians regardless of province</div></div>
+      <div class="dr"><div class="dt">Official Languages Act (1969)</div><div class="db">French and English both protected nationally under Trudeau's "two official languages and a pluralist society"</div></div>
+      <div class="dr"><div class="dt">Multiculturalism</div><div class="db">Policy celebrating diversity — "Canada has never been a melting pot; more like a tossed salad"</div></div>
+      <div class="dr"><div class="dt">National institutions</div><div class="db">CBC (national broadcaster), universal healthcare, national parks — things Canadians share regardless of province</div></div>
+      <div class="dr"><div class="dt">Equalization payments</div><div class="db">Federal transfers to poorer provinces to ensure similar public services nationwide — a concrete unifying mechanism</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== U4B — Unity & Tensions ===== -->
+<section id="u4b" class="pg">
+  <div class="hero">
+    <span class="utag" style="background:var(--gold-l);color:var(--gold-d)">Unit 4 · Ch. 15, 16</span>
+    <h1>Canadian Unity & Tensions</h1>
+    <p>To what extent should Canadian national unity be promoted?</p>
+  </div>
+  <div class="card">
+    <div class="card-title">Forces threatening unity</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Québec sovereignty</div><div class="db">1995 referendum (50.5% NO) was the biggest crisis. Sovereignists vs federalists; Quiet Revolution transformed Québec; Bill 101; Parti Québécois. Ongoing tension about Francophone identity in an English-dominant continent. "It will always be difficult for a small people speaking French in America."</div></div>
+      <div class="dr"><div class="dt">Aboriginal self-determination</div><div class="db">First Nations seeking self-government; Indian Act still in force; residential schools; 800+ specific land claims unresolved; AFN gave federal government failing grade (2006). The Oka Crisis (1990) showed how quickly tensions can escalate.</div></div>
+      <div class="dr"><div class="dt">Regionalism</div><div class="db">Western alienation (especially Alberta), resource ownership disputes (National Energy Program controversy), provincial vs federal power. Could slide into nationalist loyalty if left unaddressed.</div></div>
+      <div class="dr"><div class="dt">Conscription</div><div class="db">WWI and WWII — forced military service divided French and English Canada. 1942 plebiscite: 79% of anglophones supported overseas conscription; 85% of Francophones opposed it.</div></div>
+      <div class="dr"><div class="dt">Multiculturalism debate</div><div class="db">Does celebrating diversity strengthen or weaken national unity? Some argue it creates a stronger, more resilient Canada. Others argue it divides Canadians and prevents a shared sense of national identity from developing.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Residential schools & reconciliation</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">What they were</div><div class="db">System designed to forcibly assimilate Indigenous children — removed from families, forbidden to speak their language or practice their culture. Government policy for 150+ years.</div></div>
+      <div class="dr"><div class="dt">Royal Commission (1996)</div><div class="db">People to People, Nation to Nation — 66 recommendations. Called the policy "wrong." Recommended self-government, land claim settlements, treaty negotiations. Most recommendations unimplemented by 2006.</div></div>
+      <div class="dr"><div class="dt">Settlements reached</div><div class="db">Nisga'a Agreement (1998), Nunavut created (1999), James Bay Agreement (1975). But 800+ claims still unresolved.</div></div>
+      <div class="dr"><div class="dt">National Aboriginal Day</div><div class="db">June 21 — one of the few Royal Commission recommendations actually implemented</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Reasonable accommodation in Québec</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">The tension</div><div class="db">How can Québec accommodate immigrant cultures while protecting Francophone identity? In 2007, the town of Hérouxville (no immigrants) adopted a code of conduct banning certain immigrant practices — sparked national debate.</div></div>
+      <div class="dr"><div class="dt">Bouchard-Taylor Commission</div><div class="db">Québec Premier Charest established this commission to explore reasonable accommodation challenges. Heard testimony across the province about the balance between Francophone identity and cultural diversity.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FRENCH REVOLUTION ===== -->
+<section id="fr" class="pg">
+  <div class="hero">
+    <span class="utag" style="background:var(--indigo-l);color:var(--indigo-d)">Unit 1 Supplement · Ch. 2</span>
+    <h1>The French Revolution</h1>
+    <p>A key case study for how nationalism forms — consistently appears on Alberta 20-1 source-based questions.</p>
+  </div>
+  <div class="ib ii">Your teacher said German nationalism won't appear directly, and the French Revolution isn't a huge focus — but online Alberta 20-1 practice exams consistently test it in <strong>source-based questions</strong>. Know the key players, events, and what the Revolution demonstrates about nationalism forming.</div>
+  <div class="card">
+    <div class="card-title">Social structure — the Old Regime (before 1789)</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">1st Estate</div><div class="db">Catholic Clergy — exempt from taxes, held enormous wealth and power. Represented a tiny minority.</div></div>
+      <div class="dr"><div class="dt">2nd Estate</div><div class="db">Nobility — land-owners, exempt from most taxes. Also a small minority.</div></div>
+      <div class="dr"><div class="dt">3rd Estate</div><div class="db">Everyone else (~97% of population) — commoners, merchants, peasants. Paid all the taxes. Under the old system, each estate had ONE combined vote, so the 3rd Estate's single vote was always outvoted 2-1.</div></div>
+    </div>
+    <div class="ib ig">Source tip: If a source shows pamphlets demanding voting "by head" (one person, one vote) rather than "by order" (one estate, one vote), the authors are almost certainly from the <strong>Third Estate</strong> — demanding a fairer system where their majority numbers would give them power.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Key events</div>
+    <div class="dlist">
+      <div class="dr"><div class="dt">Estates-General (1789)</div><div class="db">King Louis XVI called all three estates to solve France's financial crisis — but it sparked revolution instead. Third Estate demanded voting by head; when refused, they declared themselves the National Assembly.</div></div>
+      <div class="dr"><div class="dt">National Assembly</div><div class="db">Third Estate declared itself the National Assembly — claiming to represent the French people, not the king. Radical shift: sovereignty belongs to the nation, not the monarch.</div></div>
+      <div class="dr"><div class="dt">Tennis Court Oath</div><div class="db">National Assembly members vowed not to disband until France had a written constitution. Direct challenge to royal absolute power.</div></div>
+      <div class="dr"><div class="dt">Declaration of Rights of Man</div><div class="db">1789 — stated equality and freedom for all citizens. Foundational document of modern civic nationalism. Became basis for French national identity.</div></div>
+      <div class="dr"><div class="dt">Reign of Terror</div><div class="db">Revolutionary leaders became extreme — thousands executed by guillotine, including the king (Louis XVI) and queen (Marie Antoinette). Shows how nationalism can slide into ultranationalism.</div></div>
+      <div class="dr"><div class="dt">Napoleon</div><div class="db">Rose from the Revolution — restored order, spread French ideals of nationalism across Europe through conquest. Paradox: spread the idea of nationhood while conquering other nations and denying them self-determination.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">What the French Revolution shows about nationalism</div>
+    <ul class="cl">
+      <li><strong>Revolution vs evolution:</strong> France chose revolution — sudden violent overthrow. The US also chose revolution. Canada chose evolution (gradualism).</li>
+      <li><strong>Civic nationalism forming:</strong> The Declaration of Rights of Man was principle-based — "citizen" replaced "subject." Open to anyone who accepted the laws.</li>
+      <li><strong>Economic drivers:</strong> Taxes, inequality, and food shortages drove nationalism just as much as ideology. Nationalism doesn't just come from cultural pride — economic grievances fuel it too.</li>
+      <li><strong>Nationalism → ultranationalism:</strong> The Reign of Terror shows how quickly revolutionary nationalist movements can become extreme and target their own people.</li>
+      <li><strong>Spreading nationalism:</strong> Napoleon's conquests spread the <em>idea</em> of nations and nationalism across Europe — unintentionally fuelling nationalist independence movements everywhere he conquered.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== QUIZ ===== -->
+<section id="quiz" class="pg">
+  <div class="hero">
+    <h1>Practice Quiz</h1>
+    <p>20 questions across all units and the French Revolution. Choose an answer to reveal the explanation.</p>
+  </div>
+  <div class="qmeta">
+    <span class="qscore" id="sc">0 / 0</span>
+    <span style="font-size:13px;color:var(--txt3)">correct</span>
+    <div class="qtrack"><div class="qfill" id="qp" style="width:0%"></div></div>
+    <button class="rbtn" onclick="resetQ()">↺ Reset</button>
+  </div>
+  <div id="qc"></div>
+</section>
+
+<!-- ===== QUICK REFERENCE ===== -->
+<section id="ref" class="pg">
+  <div class="hero">
+    <h1>Quick Reference</h1>
+    <p>Every key term in one place. Perfect for a last-minute scan or to share with friends.</p>
+  </div>
+  <div class="card" style="padding:0;overflow:hidden">
+    <table class="rtable">
+      <thead><tr><th style="width:195px">Term</th><th>Definition</th><th style="width:75px">Unit</th></tr></thead>
+      <tbody id="rtb"></tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+</div>
+
+<script>
+// ── NAV ──
+const LABELS={ov:'Overview & Exam Tips',u1a:'What is a Nation?',u1b:'Identity & Loyalties',u2a:'Foreign Policy & WWI',u2b:'Ultranationalism',u2c:'Case Studies & Crimes',u2d:'Self-Determination',u3a:'International Bodies',u3b:'Peacekeeping',u4a:'Canadian Identity',u4b:'Unity & Tensions',fr:'French Revolution',quiz:'Practice Quiz (20 Qs)',ref:'Quick Reference'};
+function show(id){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.ni').forEach(n=>n.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.ni').forEach(n=>{if(n.textContent.trim()===LABELS[id])n.classList.add('active')});
+  window.scrollTo(0,0);
+  closeSidebar();
+}
+function toggleSidebar(){
+  const sb=document.getElementById('sidebar');
+  const ov=document.getElementById('overlay');
+  const hm=document.getElementById('hamBtn');
+  sb.classList.toggle('open');
+  ov.classList.toggle('open');
+  hm.classList.toggle('open');
+}
+function closeSidebar(){
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('hamBtn').classList.remove('open');
+}
+
+// ── QUIZ ──
+const QS=[
+  {u:'U1',q:'Which element alone is NOT enough to make a nation?',opts:['People','Principles','Place only','Patriotism'],ans:2,ex:"Place without people or principles is just geography. Antarctica is a place, but it has no people or principles — so it's not a nation."},
+  {u:'U1',q:'A nation built on shared laws and principles is called a:',opts:['Ethnic nation','Civic nation','Sovereign state','Imagined community'],ans:1,ex:'Civic nations are built on principles turned into laws. Canada, France, Britain, and the USA are all civic nations.'},
+  {u:'U1',q:'Benedict Anderson called a nation an "imagined political community" because:',opts:['Nations are fictional','People feel connected to millions they will never meet through shared symbols','Nations are created by governments','All nations are based on imagination'],ans:1,ex:'Anderson meant that members of a nation feel a sense of community with people they\'ve never met, through shared symbols, stories, and identity — not that nations are fake.'},
+  {u:'U1',q:'Groups striving for political independence from a larger state have which type of loyalty?',opts:['Non-nationalist loyalty','Regional loyalty','Nationalist loyalty','Ideological loyalty'],ans:2,ex:'Nationalist loyalties = striving for sovereignty/independence (e.g. Québec sovereignists, Tibet). Non-nationalist = feeling underrepresented but not seeking independence.'},
+  {u:'U2',q:'The main reason the Treaty of Versailles contributed to WWII was:',opts:['It gave Germany too much territory','It created massive humiliation and resentment in Germany, fertile ground for Hitler','It ignored France\'s demands completely','It failed to create the League of Nations'],ans:1,ex:'Germany lost territory, colonies, had to pay $30B in reparations, and accept full "war guilt." Economic devastation, humiliation, and resentment made the Nazi message appealing. Foch called it "an armistice of 20 years."'},
+  {u:'U2',q:'How does ultranationalism develop? Which factor is NOT a typical cause?',opts:['Economic/social crisis','Charismatic authoritarian leader','A diverse multicultural population','Propaganda promoting group superiority'],ans:2,ex:'Ultranationalism develops from crisis (Great Depression), charismatic leaders (Hitler, Stalin, Tojo), and myths of superiority. A diverse multicultural population is actually a check on ultranationalism, not a cause.'},
+  {u:'U2',q:'In Rwanda 1994, who were the perpetrators and victims?',opts:['Tutsis attacked Hutus','Hutus (majority) attacked Tutsis (minority)','Belgians attacked both groups','UN peacekeepers attacked civilians'],ans:1,ex:'Hutu ultranationalists used radio propaganda to incite mass killing of Tutsis. ~800,000 Tutsis killed in 100 days. Roméo Dallaire\'s warnings were ignored by the UN.'},
+  {u:'U2',q:'What is the definition of "crimes against humanity"?',opts:['Only mass killings during wartime','Widespread or systematic attacks against a civilian population','Only crimes committed by governments','Crimes that include genocide only'],ans:1,ex:'Crimes against humanity = widespread or systematic attacks against civilians: murder, extermination, enslavement, deportation, torture, rape or sexual slavery, enforced disappearance, apartheid.'},
+  {u:'U2',q:'First Nations in Canada want self-determination. This means they want:',opts:['Full independence from Canada','To control all of Canada','Self-government within Canada — not a separate state','Sovereignty equal to Canada\'s'],ans:2,ex:'Self-determination ≠ sovereignty. First Nations want self-government within Canada. Full sovereignty would mean being in charge of all Canadians, which isn\'t the goal. This is their home.'},
+  {u:'U2',q:'Appeasement failed against Hitler because:',opts:['Britain and France ran out of money','It emboldened Hitler — he took more territory after each concession','The League of Nations overruled it','The Soviet Union intervened'],ans:1,ex:'Britain, France, and Italy gave Hitler the Sudetenland in 1938. He took the rest of Czechoslovakia in 1939 anyway. Churchill: "An appeaser feeds a crocodile hoping it will eat him last."'},
+  {u:'U2',q:'The 1995 Québec sovereignty referendum result was:',opts:['60% YES','50.5% NO — razor thin','65% NO — decisive','The vote was cancelled'],ans:1,ex:'NO: 50.5%, YES: 49.42%. 93.5% of Québécois voted. Described as a "near-death experience" for Canadian federalists.'},
+  {u:'U3',q:'Who invented modern UN peacekeeping in 1956?',opts:['Pierre Trudeau','Roméo Dallaire','Lester B. Pearson','Stephen Harper'],ans:2,ex:'Lester B. Pearson (Canadian minister of external affairs, later PM) proposed the UN Emergency Force during the Suez Canal crisis. He won the Nobel Peace Prize.'},
+  {u:'U3',q:'UN peacekeepers may use force only for:',opts:['Protecting civilians at all costs','Self-defence only','Enforcing ceasefires aggressively','Whenever the Security Council orders it'],ans:1,ex:'The 3 peacekeeping rules: Consent (respect sovereignty), Impartiality (no sides), Self-Defence only. This limitation made peacekeepers powerless in Rwanda and Bosnia.'},
+  {u:'U3',q:'Peacemaking differs from peacekeeping because peacemakers:',opts:['Must be strictly neutral','May only use force in self-defence','Can take sides, use offensive force, and don\'t need host consent','Must wait for a ceasefire first'],ans:2,ex:'Peacemakers are NOT neutral, can use offensive force, and do not require the host country\'s consent. The goal is actively ending conflict and stopping human rights abuses.'},
+  {u:'U3',q:'What was the key failure in Rwanda that led to reform debate?',opts:['Dallaire ignored the UN\'s warnings','The UN ignored Dallaire\'s warnings and denied his requests for reinforcement','Canada refused to participate','The Hutus were too powerful for any force to stop'],ans:1,ex:'Dallaire warned the UN months before the genocide and requested more troops + permission to seize Hutu weapons. All requests were denied. 800,000 died. Led to major debate about replacing peacekeeping with peacemaking.'},
+  {u:'U4',q:'What type of nation is Canada primarily classified as?',opts:['Ethnic nation','Civic nation','Theocratic nation','Imperial nation'],ans:1,ex:'Canada is a civic nation — built on principles in law (Constitution, Charter of Rights and Freedoms). Membership is based on accepting the laws, not on ethnicity.'},
+  {u:'U4',q:'The Oka Crisis (1990) was primarily about:',opts:['Québec seeking independence','Mohawks blocking a golf course expansion onto sacred ancestral land','French-English language rights','A dispute over equalization payments'],ans:1,ex:'Mohawks on the Kanesatake reserve near Oka blocked a golf course expansion onto land they considered sacred. The crisis lasted 4 months, a police officer was killed, and the army was deployed with 2500 soldiers.'},
+  {u:'U4',q:'Canada became the first country to adopt multiculturalism as official government policy in:',opts:['1867','1982','1971','1988'],ans:2,ex:'Canada adopted multiculturalism as official policy in 1971. The Canadian Multiculturalism Act of 1988 further affirmed it. The word "multiculturalism" was actually coined in Canada in 1965.'},
+  {u:'FR',q:'The Third Estate in pre-revolutionary France demanded voting "by head" rather than "by order" because:',opts:['They wanted clergy to have less power','Voting by head gave their majority numbers real power instead of always losing 2-1','They supported the king\'s absolute authority','They wanted equal representation for each estate'],ans:1,ex:'Under "by order," each estate had one vote — so the 1st and 2nd Estates could always outvote the 3rd Estate 2-1 even though the 3rd represented 97% of the population. "By head" meant one person, one vote — giving the 3rd Estate a majority.'},
+  {u:'FR',q:'What does the Reign of Terror illustrate about nationalism?',opts:['Civic nationalism always succeeds','Revolutionary nationalism can quickly turn into ultranationalism targeting its own people','The French Revolution was peaceful','Evolution is always better than revolution'],ans:1,ex:'The Reign of Terror shows how rapidly a nationalist movement can become extreme and fanatical — turning on its own people. Revolutionary nationalist passion can slide into ultranationalism when unchecked.'}
+];
+
+let picked=new Array(QS.length).fill(null),correct=0;
+function buildQ(){
+  const c=document.getElementById('qc');c.innerHTML='';
+  const UC={U1:'var(--p500)',U2:'var(--teal)',U3:'var(--rose)',U4:'var(--gold)',FR:'var(--indigo)'};
+  QS.forEach((q,i)=>{
+    const d=document.createElement('div');d.className='card qblock';
+    d.innerHTML=`<div class="qnum" style="color:${UC[q.u]||'var(--p400)'}">${q.u} · Question ${i+1} of ${QS.length}</div><div class="qtext">${q.q}</div>${q.opts.map((o,j)=>`<button class="qopt" id="q${i}o${j}" onclick="pick(${i},${j})">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}<div class="qfb" id="fb${i}"></div>`;
+    c.appendChild(d);
+  });updateSc();
+}
+function pick(qi,oi){
+  if(picked[qi]!==null)return;
+  picked[qi]=oi;const ok=oi===QS[qi].ans;if(ok)correct++;
+  for(let j=0;j<QS[qi].opts.length;j++){
+    const b=document.getElementById(`q${qi}o${j}`);
+    if(j===QS[qi].ans)b.classList.add('correct');else if(j===oi&&!ok)b.classList.add('wrong');
+    b.disabled=true;
+  }
+  const fb=document.getElementById(`fb${qi}`);
+  fb.textContent=(ok?'✓ Correct! ':'✗ Not quite. ')+QS[qi].ex;
+  fb.className='qfb show '+(ok?'ok':'bad');
+  updateSc();
+}
+function updateSc(){
+  const done=picked.filter(x=>x!==null).length;
+  document.getElementById('sc').textContent=`${correct} / ${done}`;
+  document.getElementById('qp').style.width=done>0?`${Math.round(correct/done*100)}%`:'0%';
+}
+function resetQ(){picked=new Array(QS.length).fill(null);correct=0;buildQ();}
+
+// ── REFERENCE TABLE ──
+const TERMS=[
+  ['Nationalism','A force of unification; the common purpose/destiny of a people toward a shared goal. Paradox: unifies some, excludes others.','U1'],
+  ['Nation','A people with shared identity; can be a people, place, or set of principles — often all three','U1'],
+  ['Nation-state','A political unit (country) where people and government largely align','U1'],
+  ['Civic nation','Nation built on shared principles turned into laws — open to anyone who accepts them (Canada, France, USA)','U1'],
+  ['Ethnic nation','Nation built on shared ancestry, language, culture — membership tied to birth/heritage','U1'],
+  ['Collective consciousness','The shared internal sense of "we" — common identity, values, and memory that unite a nation','U1'],
+  ['National myths','Shared stories (accurate or not) that connect people to the nation\'s past and promote national values','U1'],
+  ['The 4 P\'s','People, Place, Principles, Patriotism — the elements of a nation. Place alone ≠ nation.','U1'],
+  ['Contending loyalties','Competing loyalties pulling people in different directions (national vs religious, regional, class, etc.)','U1'],
+  ['Nationalist loyalty','Loyalty to a group striving for sovereignty/political independence','U1'],
+  ['Non-nationalist loyalty','Loyalty that competes with national loyalty but doesn\'t aim for statehood (class, region, religion, culture)','U1'],
+  ['Cultural pluralism','Encouraging different cultural groups to maintain distinct identities within one society','U1'],
+  ['Reasonable accommodation','Legal requirement for public institutions to adapt to minority religious/cultural practices (within limits)','U1'],
+  ['Multiculturalism','Canada\'s official version of cultural pluralism — policy since 1971, Act 1988. Canada coined the word in 1965.','U4'],
+  ['National interest','What a nation needs (necessities) or wants (desires)','U2'],
+  ['Domestic policy','Guides decisions within the country','U2'],
+  ['Foreign policy','Guides decisions about relations with other countries','U2'],
+  ['Stakeholders','Anyone affected by or affecting the pursuit of national interest','U2'],
+  ['Treaty of Versailles','1919 post-WWI treaty. Required Germany to pay $30B, reduce military, give up territory, accept war guilt. Created resentment that fuelled Nazism.','U2'],
+  ['League of Nations','Post-WWI international body — failed (Japan, Italy, Germany ignored it). Replaced by UN after WWII.','U2'],
+  ['Ultranationalism','Extreme, fanatical nationalism — violent, targeted at one group, single-minded. 3 signs: violent, targeted, fanatical.','U2'],
+  ['Propaganda','Misleading information spread to achieve a goal — uses fear, scapegoating, national symbols. Tool of ultranationalists.','U2'],
+  ['Appeasement','Giving in to aggressor demands to avoid conflict. Failed against Hitler — emboldened aggression.','U2'],
+  ['Genocide','Deliberate destruction of a national, ethnic, racial, or religious group','U2'],
+  ['Crimes against humanity','Widespread/systematic attacks against civilians: murder, enslavement, torture, deportation, rape, apartheid','U2'],
+  ['War crimes','Wilful killing, torture, inhuman treatment; attacking civilians or peacekeepers','U2'],
+  ['Ethnic cleansing','Forcing an ethnic group out of a territory through violence or intimidation','U2'],
+  ['ICC','International Criminal Court (1998) — tries genocide, war crimes, crimes against humanity. Needs state cooperation.','U2'],
+  ['Sovereignty','Full political independence — being in charge of your own state. Always ranks above self-determination.','U2'],
+  ['Self-determination','Right of a people to choose how they\'re governed — does NOT always mean full independence','U2'],
+  ['Sovereignists','People supporting Québec becoming an independent state','U2'],
+  ['Federalists','People believing Québec should remain a Canadian province','U2'],
+  ['Quiet Revolution','Modernization of Québec — from rural/religious to urban/secular. Bill 101 protected French language.','U2'],
+  ['Bill 101','Québec law making French the language of govt, workplaces, schools, business','U2'],
+  ['Internationalism','Cooperative approach to world affairs — nations working together for shared goals','U3'],
+  ['United Nations','192-member international body (post-WWII) — peace, security, human rights. Security Council = most powerful.','U3'],
+  ['NATO','North Atlantic Treaty Organization (1949) — "attack on one = attack on all." Canada founding member.','U3'],
+  ['NGOs','Non-governmental organizations (Red Cross, MSF, Amnesty) — independent humanitarian action','U3'],
+  ['Peacekeeping','Neutral monitoring after ceasefire; 3 rules: consent, impartiality, self-defence only','U3'],
+  ['Peacemaking','Active military intervention; not neutral; can use force; no consent needed','U3'],
+  ['Lester B. Pearson','Canadian who invented modern peacekeeping in 1956 (Suez Canal); Nobel Peace Prize; later PM','U3'],
+  ['Roméo Dallaire','Canadian general, UN Rwanda 1993–94; warned UN of genocide; requests denied; 800,000 killed','U3'],
+  ['Decolonization','Process of formerly colonized territories gaining independence, often linked to self-determination','U3'],
+  ['Oka Crisis','1990 standoff — Mohawks blocked golf course on sacred land. Sparked Royal Commission on Aboriginal Peoples.','U4'],
+  ['Royal Commission (1996)','People to People, Nation to Nation — 66 recommendations for reconciliation. Most unimplemented. AFN gave govt failing grade 2006.','U4'],
+  ['Nisga\'a Agreement (1998)','Landmark land claim — 2000 km² + self-government rights for culture, land, education, resources','U4'],
+  ['Nunavut','New territory created April 1, 1999. 85% Inuit. Gradual self-administration. Traditional Inuit knowledge in governance.','U4'],
+  ['National Aboriginal Day','June 21 — one of few Royal Commission recommendations implemented','U4'],
+  ['Conscription','Compulsory military service — divided Canada in WWI and WWII, especially French vs English','U4'],
+  ['Reconciliation','Process of rebuilding relationships between Canada and Indigenous peoples after history of suppression','U4'],
+  ['3rd Estate','97% of France before 1789 — commoners who bore the tax burden and drove the Revolution','FR'],
+  ['Old Regime','Pre-revolution France\'s social/political system — three estates, absolute monarchy','FR'],
+  ['Tennis Court Oath','1789 vow by National Assembly not to disband until France had a constitution','FR'],
+  ['Declaration of Rights of Man','1789 — stated equality and freedom for all. Foundational civic nationalism document.','FR'],
+  ['Reign of Terror','Radical phase of French Revolution — thousands executed. Shows nationalism → ultranationalism.','FR'],
+  ['Napoleon','Rose from Revolution — spread French ideals of nationalism across Europe through conquest. Paradox: spread nationhood while conquering nations.','FR'],
+];
+
+function buildRef(){
+  const tb=document.getElementById('rtb');
+  const UC={U1:['var(--p100)','var(--p700)'],U2:['var(--teal-l)','var(--teal-d)'],U3:['var(--rose-l)','var(--rose-d)'],U4:['var(--gold-l)','var(--gold-d)'],FR:['var(--indigo-l)','var(--indigo-d)']};
+  tb.innerHTML=TERMS.map(([t,d,u])=>{
+    const[bg,col]=UC[u]||['var(--p50)','var(--p700)'];
+    return`<tr><td class="rterm">${t}</td><td class="rtxt">${d}</td><td><span style="background:${bg};color:${col};font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap">${u}</span></td></tr>`;
+  }).join('');
+}
+
+buildQ();buildRef();
+</script>
+</body>
+</html>
